@@ -4,6 +4,7 @@ import {AppLoading} from "expo";
 import { useScreens } from 'react-native-screens';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import MealsNavigator from './navigation/MealsNavigator';
 import mealsReducer from './store/reducers/meals';
@@ -14,7 +15,7 @@ const rootReducer = combineReducers({
   meals: mealsReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools());
 
 const fetchFonts = () => {
   return Font.loadAsync({
