@@ -65,9 +65,13 @@ const MealDetailScreen = props => {
         <ListItem key={ingredient}>{ingredient}</ListItem>
       ))}
       <Text style={styles.title}>Steps</Text>
-      {selectedMeal.steps.map(step => (
-        <ListItem key={step}>{step}</ListItem>
-      ))}
+      <View style={styles.stepsContainer}>
+        {selectedMeal.steps.map((step, i) => (
+          <View key={step} style={styles.step}>
+            <Text> {i + 1}. {step}</Text>
+          </View>
+        ))}
+      </View>
     </ScrollView>
   );
 };
@@ -108,11 +112,18 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   listItem: {
-    marginVertical: 10,
+    marginVertical: 6,
     marginHorizontal: 20,
     borderColor: "#ccc",
     borderWidth: 1,
     padding: 10
+  },
+  stepsContainer: {
+    marginBottom: 20
+  },
+  step: {
+    marginVertical: 6,
+    marginHorizontal: 20
   }
 });
 export default MealDetailScreen;
